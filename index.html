@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#191a18" />
+    <meta name="description" content="Rudenko Design — дизайн і виробництво корпусних меблів на замовлення з 2002 року. Київ." />
+    <title>Rudenko Design — меблі з характером</title>
+    <script>const routeParams = new URLSearchParams(location.search); const requestedPage = routeParams.get("page"); const routePosters = { about: "Images/Enhanced/About us/5.webp", projects: "Images/Enhanced/Projects/Kitchens/Apartment Two/148.webp", contacts: "Images/Enhanced/Projects/Hospitable/Apartment Two/143.webp" }; if (requestedPage && requestedPage !== "home") { document.documentElement.classList.add("route-pending"); const routePoster = routePosters[requestedPage]; if (routePoster) document.documentElement.style.setProperty("--route-poster", `url("${encodeURI(routePoster)}")`); if (requestedPage === "project") document.documentElement.classList.add("route-project-pending"); }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=block" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="design.css" />
+    <script src="projects-data.js" defer></script>
+    <script src="i18n.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Rudenko Design — головна"><span class="brand-name">RUDENKO DESIGN</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Відкрити меню"><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Головна навігація">
+        <ul>
+          <li><a href="index.html" data-route="home">Головна</a></li>
+          <li><a href="?page=about" data-route="about">Про нас</a></li>
+          <li><a href="?page=projects" data-route="projects">Наші роботи</a></li>
+          <li><a href="?page=contacts" data-route="contacts">Контакти</a></li>
+        </ul>
+      </nav>
+      <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch language to English" aria-pressed="false">EN</button>
+      <button class="header-cta" type="button" data-open-inquiry>Написати нам <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="home-carousel" aria-label="Rudenko Design — головні розділи" data-carousel>
+        <div class="carousel-slides"><div class="carousel-track">
+          <article id="slide-panel-1" class="hero-slide is-active" role="tabpanel" aria-labelledby="slide-tab-1" data-slide="0">
+            <img class="hero-image" src="Images/Enhanced/Main page/1.webp" alt="Сучасний інтер’єр із меблями Rudenko Design" fetchpriority="high" />
+            <div class="hero-shade"></div><div class="hero-content hero-content-home"><p class="hero-copy">Дизайн та виробництво меблів</p><h1 id="hero-title">RUDENKO DESIGN</h1><p class="hero-copy">з 2002 року</p></div>
+          </article>
+          <article id="slide-panel-2" class="hero-slide" role="tabpanel" aria-labelledby="slide-tab-2" data-slide="1" aria-hidden="true" inert>
+            <img class="hero-image" src="Images/Enhanced/Main page/2.webp" alt="Меблі, виготовлені на власному виробництві" loading="lazy" />
+            <div class="hero-shade"></div><div class="hero-content"><h2>14 років ми робимо меблі</h2><p class="hero-copy">Ми займаємося виробництвом функціональних меблів стабільно високої якості з ексклюзивним авторським дизайном. Набутий досвід, сучасні технології, європейське обладнання та власне виробництво дають нам змогу із зацікавленням виконувати індивідуальні замовлення й успішно реалізовувати масштабні проєкти.</p><div class="hero-actions"><a class="button button-light" href="?page=about">Познайомитися зі студією <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+          <article id="slide-panel-3" class="hero-slide" role="tabpanel" aria-labelledby="slide-tab-3" data-slide="2" aria-hidden="true" inert>
+            <img class="hero-image" src="Images/Enhanced/Main page/3.webp" alt="Інтер’єрний проєкт із меблями Rudenko Design" loading="lazy" />
+            <div class="hero-shade"></div><div class="hero-content"><h2>Для найкращих дизайн-проєктів</h2><p class="hero-copy">Студія Rudenko Design багато років співпрацює з відомими дизайнерами інтер’єрів та архітекторами. Для щорічного Всеукраїнського архітектурного конкурсу «Інтер’єр року 2013» та інтер’єрної премії ART SPACE 2015 ми виготовили меблі для кількох проєктів-переможців.</p><div class="hero-actions"><a class="button button-light" href="?page=projects">Переглянути портфоліо <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+          <article id="slide-panel-4" class="hero-slide" role="tabpanel" aria-labelledby="slide-tab-4" data-slide="3" aria-hidden="true" inert>
+            <img class="hero-image" src="Images/Enhanced/Main page/4.webp" alt="Меблі Rudenko Design у житловому інтер’єрі" loading="lazy" />
+            <div class="hero-shade"></div><div class="hero-content"><h2>Для вас</h2><p class="hero-copy">Виробництво меблів у Rudenko Design — це індивідуальний підхід щоразу: від конструкторського проєктування до виготовлення та встановлення меблів на об’єкті. Щоб дізнатися вартість окремих виробів або обговорити дизайн, надішліть нам звернення чи зателефонуйте — ми завжди на зв’язку.</p><div class="hero-actions"><a class="button button-light" href="?page=contacts#contact-section">Зв’язатися з нами <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+        </div></div>
+        <button class="carousel-arrow carousel-arrow-previous" type="button" data-direction="previous" aria-label="Попередній слайд">‹</button><button class="carousel-arrow carousel-arrow-next" type="button" data-direction="next" aria-label="Наступний слайд">›</button><div class="carousel-controls"><div class="carousel-tabs" role="tablist" aria-label="Слайди головної сторінки"><button id="slide-tab-1" class="carousel-tab is-active" type="button" role="tab" aria-label="Слайд 1: Головна" aria-selected="true" aria-controls="slide-panel-1" data-go-to="0"></button><button id="slide-tab-2" class="carousel-tab" type="button" role="tab" aria-label="Слайд 2: 14 років ми робимо меблі" aria-selected="false" aria-controls="slide-panel-2" data-go-to="1" tabindex="-1"></button><button id="slide-tab-3" class="carousel-tab" type="button" role="tab" aria-label="Слайд 3: Для найкращих дизайн-проєктів" aria-selected="false" aria-controls="slide-panel-3" data-go-to="2" tabindex="-1"></button><button id="slide-tab-4" class="carousel-tab" type="button" role="tab" aria-label="Слайд 4: Для вас" aria-selected="false" aria-controls="slide-panel-4" data-go-to="3" tabindex="-1"></button></div></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-top"><a class="brand brand-footer" href="index.html" aria-label="Rudenko Design — на початок"><span class="brand-name">RUDENKO DESIGN</span></a><div class="footer-nav"><span>Навігація</span><a href="?page=about">Про нас</a><a href="?page=projects">Наші роботи</a><a href="?page=contacts#contact-section">Контакти</a></div><div class="footer-contact"><span>Зв’яжіться з нами</span><a href="tel:+380671507799">+380 (67) 150-77-99</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mebli.rus%40gmail.com" target="_blank" rel="noopener noreferrer">mebli.rus@gmail.com</a><a href="https://maps.app.goo.gl/83bnbBaeUM26fp3b9" target="_blank" rel="noreferrer">м. Київ, вул. Роберта Лісовського, 3А</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Rudenko Design</span><div class="social-links"><a href="https://www.instagram.com/rudenko_mebli/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/Rudenkomebli" target="_blank" rel="noreferrer">Facebook ↗</a><a href="https://www.linkedin.com/in/ruslan-rudenko-a6615943/?locale=uk" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div></footer>
+    <div class="inquiry-modal" id="inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-title" aria-hidden="true"><button class="inquiry-close" type="button" aria-label="Закрити форму">×</button><form class="contact-form inquiry-form" id="inquiry-form"><p class="eyebrow"><span class="eyebrow-line"></span>RUDENKO DESIGN</p><h2 id="inquiry-title">Ваш запит</h2><div class="form-grid"><div class="field field-full"><label for="inquiry-name">Ваше ім’я *</label><input id="inquiry-name" name="name" autocomplete="name" required /></div><div class="field field-full"><label for="inquiry-phone">Телефон *</label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" required /></div><div class="field field-full"><label for="inquiry-email">Адреса електронної пошти</label><input id="inquiry-email" name="email" type="email" autocomplete="email" /></div><div class="field field-full"><label for="inquiry-message">Ваше повідомлення</label><textarea id="inquiry-message" name="message" placeholder="Розкажіть про ваш проєкт"></textarea></div></div><button class="button button-light form-submit" type="submit">Надіслати <span aria-hidden="true">↗</span></button><p class="form-status" role="status" aria-live="polite"></p></form></div>
+  </body>
+</html>
