@@ -28,7 +28,9 @@ const projectTitles = {
 const projectTitle = project => projectTitles[project.name] || project.name;
 
 const params = new URLSearchParams(location.search);
-const page = params.get("page") || "home";
+const route = window.RUDENKO_ROUTE || {};
+const page = route.page || params.get("page") || "home";
+const siteBasePath = route.isPrefixed ? route.basePath : "";
 const main = document.querySelector("#main");
 const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
 const imageUrl = value => encodeURI(value).replaceAll("'", "%27");
@@ -241,6 +243,28 @@ function initCarousel() {
   });
 }
 
+function normalizePrefixedLinks() {
+  if (!siteBasePath) return;
+  document.querySelectorAll("a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === "index.html") {
+      link.setAttribute("href", `${siteBasePath}/`);
+      return;
+    }
+    if (href.startsWith("#")) {
+      link.setAttribute("href", `${location.pathname}${location.search}${href}`);
+      return;
+    }
+    if (!href.startsWith("?page=")) return;
+    const [queryString, hash = ""] = href.slice(1).split("#", 2);
+    const query = new URLSearchParams(queryString);
+    const target = query.get("page") || "home";
+    query.delete("page");
+    const path = target === "home" ? `${siteBasePath}/` : `${siteBasePath}/${target === "project" ? "projects" : target}`;
+    link.setAttribute("href", `${path}${query.size ? `?${query}` : ""}${hash ? `#${hash}` : ""}`);
+  });
+}
+
 async function renderDynamicPage() {
   try {
     const projects = page === "projects" || page === "project" ? loadProjects() : [];
@@ -248,10 +272,15 @@ async function renderDynamicPage() {
     else if (page === "projects") renderProjects(projects);
     else if (page === "project") renderProject(projects);
     else if (page === "contacts") renderContacts();
+    else if (page === "not-found") {
+      document.title = "Сторінку не знайдено — Rudenko Design";
+      main.innerHTML = '<section class="not-found"><div><h1>Сторінку не знайдено</h1><p>Перевірте адресу або поверніться на головну сторінку.</p><a class="button button-dark" href="index.html">На головну <span aria-hidden="true">↗</span></a></div></section>';
+    }
     else {
       document.title = "Rudenko Design — меблі з характером";
       initCarousel();
     }
+    normalizePrefixedLinks();
     const pageHeroImage = main.querySelector(".page-hero img");
     if (document.documentElement.classList.contains("route-pending") && pageHeroImage) {
       await pageHeroImage.decode().catch(() => {});
