@@ -214,6 +214,7 @@ function initCarousel() {
   const slides = [...carousel.querySelectorAll("[data-slide]")];
   const tabs = [...carousel.querySelectorAll("[data-go-to]")];
   const track = carousel.querySelector(".carousel-track");
+  const swipeSurface = carousel.querySelector(".carousel-slides");
   let active = 0;
   const show = index => {
     active = (index + slides.length) % slides.length;
@@ -234,6 +235,20 @@ function initCarousel() {
   tabs.forEach(tab => tab.addEventListener("click", () => show(Number(tab.dataset.goTo))));
   carousel.querySelector('[data-direction="previous"]').addEventListener("click", () => show(active - 1));
   carousel.querySelector('[data-direction="next"]').addEventListener("click", () => show(active + 1));
+  let touchStart = null;
+  swipeSurface.addEventListener("pointerdown", event => {
+    if (event.pointerType === "mouse" || event.isPrimary === false) return;
+    touchStart = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
+  }, { passive: true });
+  swipeSurface.addEventListener("pointerup", event => {
+    if (!touchStart || event.pointerId !== touchStart.pointerId) return;
+    const deltaX = event.clientX - touchStart.x;
+    const deltaY = event.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) return;
+    show(active + (deltaX < 0 ? 1 : -1));
+  }, { passive: true });
+  swipeSurface.addEventListener("pointercancel", () => { touchStart = null; }, { passive: true });
   carousel.querySelector('[role="tablist"]').addEventListener("keydown", event => {
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     event.preventDefault();

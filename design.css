@@ -311,3 +311,6 @@ h1, h2, h3, h4 { letter-spacing: -.045em; }
 
 .portfolio-page { animation: content-enter .75s .08s ease both; }
 .gallery-heading h1 { font-size: clamp(36px, 3vw, 50px); }
+
+/* Keep vertical page scrolling native while allowing horizontal carousel swipes. */
+.carousel-slides { touch-action: pan-y; }
